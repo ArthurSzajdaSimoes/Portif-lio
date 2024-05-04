@@ -10,8 +10,15 @@
             margin: auto;
             margin-bottom: 60px;
             background-color: #f0f0f0;
+            color: #000;
+            transition: background-color 0.3s ease;
         }
 
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        
         .nome {
             text-align: center;
             color: rgb(0, 0, 80);
@@ -63,6 +70,7 @@
             border: 1px solid #ccc;
             margin-bottom: 20px;
             border-radius: 5px;
+            color: #000;
         }
 
         .projeto a {
@@ -84,20 +92,21 @@
 <body>
     <div class="nome">
         <h1>Arthur Szajda Simões</h1>
-        <p>Brasileiro, solteiro, 18 anos.</p>
+        <p>Brasileiro,19 anos.</p>
     </div>
 
     <ul class="menu">
         <li><a href="https://www.linkedin.com/in/arthur-szajda-sim%C3%B5es/">Linkedin</a></li>
         <li><a href="https://github.com/ArthurSzajdaSimoes">Github</a></li>
+        <li><button onclick="toggleDarkMode()">Modo Noturno</button></li>
     </ul>
-<div>
 
-<h2>Biografia</h2>
-  <h3>Descrição</h3>
-</br>
-  <p>Meu nome é Arthur,tenho 19 anos,Estou começando no ramo de Engenharia de Software e programação,Tenho um pouco de Habilidade com C, HTML,CSS e Javascript,em todos,sou iniciante,tenho capacidade para produzir uma página básica e fazer algumas funcionalidades</p>
-</div>
+    <div>
+        <h2>Biografia</h2>
+        <h3>Descrição</h3>
+        <p>Meu nome é Arthur, tenho 19 anos. Estou começando no ramo de Engenharia de Software e programação. Tenho um pouco de habilidade com C, HTML, CSS e Javascript; em todos sou iniciante. Tenho capacidade para produzir uma página básica e fazer algumas funcionalidades.</p>
+    </div>
+
     <div>
         <h2>Objetivo</h2>
         <p>Full-Stack, Webdesigner</p>
@@ -139,5 +148,22 @@
         <p>Inglês: Básico</p>
     </div>
 
+    <script>
+        function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle("dark-mode");
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            var darkModeState = localStorage.getItem("darkMode");
+            if (darkModeState === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        });
+    </script>
 </body>
 </html>
